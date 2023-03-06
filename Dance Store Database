@@ -1,0 +1,13 @@
+CREATE TABLE dance_store (id integer primary key, name TEXT, brand TEXT, gender TEXT, size TEXT, price INTEGER) ;
+INSERT INTO dance_store VALUES ( 1, "Leotard","Capezio", "Female", "L", 21) ;
+INSERT INTO dance_store VALUES (2, "Tights", "Capezio", "Male", "M", 20);
+INSERT INTO dance_store VALUES (3, "Shirt", "Bodywrappers", "Female", "M", 10);
+INSERT INTO dance_store VALUES (4, "Pants", "Minden", "Female", "S", 15);
+INSERT INTO dance_store values (5, "Lipstick", "Doll", "Female", "NA", 5);
+INSERT INTO dance_store values (6, "Shoes" , "Capezio", "Male", "XL", 25);
+
+-- what are the brands in this store
+Select brand FROM dance_store;
+
+--display the database order by price
+Select * FROM dance_store WHERE price <26 ORDER BY price asc;
