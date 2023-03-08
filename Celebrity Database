@@ -1,0 +1,66 @@
+/* Create table about the people and what they do here */
+CREATE TABLE celebrities (id INTEGER PRIMARY KEY, 
+firstname TEXT,
+lastname TEXT,
+email TEXT,
+phone TEXT);
+
+INSERT INTO celebrities (firstname, lastname, email, phone)
+VALUES ("Benny", "Soul", "benny@soul.com", "555-8888");
+INSERT INTO celebrities (firstname, lastname, email, phone)
+VALUES ("Linda", "Ken", "linda@ken.com", "555-7778");
+INSERT INTO celebrities (firstname, lastname, email, phone)
+VALUES ("Babi", "Wilis", "babi@wilis.com", "333-2224");
+INSERT INTO celebrities (firstname, lastname, email, phone)
+VALUES ("Tomlin", "Proud", "tomlin@proud.com", "111-4443");
+
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, 
+person_id TEXT,
+title TEXT,
+released INTEGER) ;
+
+INSERT INTO movies (person_id, title, released) VALUES (1, "In The Sun", 2004);
+INSERT INTO movies (person_id, title, released) VALUES (2,"Lightning", 2006);
+INSERT INTO movies (person_id, title, released) VALUES (3, "In The Sun", 2004);
+INSERT INTO movies (person_id, title, released) VALUES (4, "Little Key", 2011);
+
+
+CREATE TABLE hobbies (id INTEGER PRIMARY KEY, 
+person_id TEXT,
+activity TEXT);
+
+INSERT INTO hobbies (person_id, activity) VALUES (1, "swimming");
+INSERT INTO hobbies (person_id, activity) VALUES (2, "fishing");
+INSERT INTO hobbies (person_id, activity) VALUES (3, "diving");
+INSERT INTO hobbies (person_id, activity) VALUES (3, "swimming");
+
+-- Make a query showing the first name, last name, email and movie of each person
+SELECT firstname, lastname, email, title FROM celebrities
+JOIN movies
+ON celebrities.id = movies.id ;
+
+--List all the celebrities and movies they have been in 
+SELECT celebrities.firstname, celebrities.lastname, movies.title
+FROM celebrities
+LEFT OUTER JOIN movies
+ON celebrities.id= movies.person_id ;
+
+-- List celebrities and movies they have been in by release year descinding
+SELECT celebrities.firstname, celebrities.lastname, movies.title, movies.released
+FROM celebrities
+LEFT OUTER JOIN movies
+ON celebrities.id= movies.person_id 
+ORDER BY released desc ;
+
+-- What celebrities have the same hobby?
+SELECT celebrities.firstname, celebrities.lastname, hobbies.activity 
+FROM celebrities
+LEFT OUTER JOIN hobbies ON celebrities.id= hobbies.person_id
+WHERE hobbies.activity='swimming';
+
+-- How many celebrities were in the same movie?
+SELECT COUNT (*), movies.title 
+FROM celebrities
+LEFT OUTER JOIN movies ON celebrities.id= movies.person_id
+WHERE movies.title='In The Sun' ;
