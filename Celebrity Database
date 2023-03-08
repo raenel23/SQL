@@ -13,6 +13,10 @@ INSERT INTO celebrities (firstname, lastname, email, phone)
 VALUES ("Babi", "Wilis", "babi@wilis.com", "333-2224");
 INSERT INTO celebrities (firstname, lastname, email, phone)
 VALUES ("Tomlin", "Proud", "tomlin@proud.com", "111-4443");
+INSERT INTO celebrities (firstname, lastname, email, phone)
+VALUES ("Nina", "Lee", "nina@lee.com", "122-7778");
+INSERT INTO celebrities (firstname, lastname, email, phone)
+VALUES ("Martha", "Henry", "martha@henry.com", "555-8855");
 
 
 CREATE TABLE movies (id INTEGER PRIMARY KEY, 
@@ -24,6 +28,11 @@ INSERT INTO movies (person_id, title, released) VALUES (1, "In The Sun", 2004);
 INSERT INTO movies (person_id, title, released) VALUES (2,"Lightning", 2006);
 INSERT INTO movies (person_id, title, released) VALUES (3, "In The Sun", 2004);
 INSERT INTO movies (person_id, title, released) VALUES (4, "Little Key", 2011);
+INSERT INTO movies (person_id, title, released) VALUES (5, "Shine", 2012);
+INSERT INTO movies (person_id, title, released) VALUES (6, "Family Nights", 2011);
+INSERT INTO movies (person_id, title, released) VALUES (4, "In The Sun", 2004);
+
+
 
 
 CREATE TABLE hobbies (id INTEGER PRIMARY KEY, 
@@ -34,6 +43,20 @@ INSERT INTO hobbies (person_id, activity) VALUES (1, "swimming");
 INSERT INTO hobbies (person_id, activity) VALUES (2, "fishing");
 INSERT INTO hobbies (person_id, activity) VALUES (3, "diving");
 INSERT INTO hobbies (person_id, activity) VALUES (3, "swimming");
+INSERT INTO hobbies (person_id, activity) VALUES (4, "hiking");
+INSERT INTO hobbies (person_id, activity) VALUES (5, "drawing");
+INSERT INTO hobbies (person_id, activity) VALUES (6, "swimming");
+INSERT INTO hobbies (person_id, activity) VALUES (2, "cooking");
+INSERT INTO hobbies (person_id, activity) VALUES (5, "swimming");
+INSERT INTO hobbies (person_id, activity) VALUES (1, "skiing");
+INSERT INTO hobbies (person_id, activity) VALUES (5, "skiing");
+INSERT INTO hobbies (person_id, activity) VALUES (2, "yoga");
+INSERT INTO hobbies (person_id, activity) VALUES (1, "surfing");
+INSERT INTO hobbies (person_id, activity) VALUES (3, "surfing");
+INSERT INTO hobbies (person_id, activity) VALUES (4, "biking");
+
+
+
 
 -- Make a query showing the first name, last name, email and movie of each person
 SELECT firstname, lastname, email, title FROM celebrities
@@ -58,6 +81,11 @@ SELECT celebrities.firstname, celebrities.lastname, hobbies.activity
 FROM celebrities
 LEFT OUTER JOIN hobbies ON celebrities.id= hobbies.person_id
 WHERE hobbies.activity='swimming';
+
+SELECT celebrities.firstname, celebrities.lastname, hobbies.activity 
+FROM celebrities
+LEFT OUTER JOIN hobbies ON celebrities.id= hobbies.person_id
+WHERE hobbies.activity='skiing';
 
 -- How many celebrities were in the same movie?
 SELECT COUNT (*), movies.title 
